@@ -17,3 +17,6 @@ Thumbs.db
 # Secrets
 Library/.env
 Library/jira_cookies.json
+
+__pycache__/
+*.pyc
