@@ -40,7 +40,7 @@ class JiraTaskFieldsValidation:
             print("Project opened.")
 
             print(f"Opening issue: {issue_key}")
-            page.wait_for_selector(f"text={issue_key}", timeout=20000)
+            page.wait_for_selector(f"text={issue_key}", timeout=30000)
 
             with page.expect_popup() as page1_info:
                 page.get_by_text(issue_key).click()
