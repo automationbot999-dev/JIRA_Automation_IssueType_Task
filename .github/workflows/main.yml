@@ -1,0 +1,40 @@
+name: Run JIRA Framework Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker build -t jira-robot-test .
+
+      - name: Run JIRA Framework Tests
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}   # Inject Doppler Service Token securely
+        run: |
+          docker run --rm \
+            -e DOPPLER_TOKEN=$DOPPLER_TOKEN \
+            -v ${{ github.workspace }}:/tests \
+            jira-robot-test
+
+      # Upload full report as artifact to store report
+      - name: Upload JIRA Framework Tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: JIRA-test-report
+          path: results
+
+          
+ 
