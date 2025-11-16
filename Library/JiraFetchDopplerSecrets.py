@@ -38,12 +38,12 @@ class JiraFetchDopplerSecrets:
         BuiltIn().log(f"API_TOKEN set to: {masked_token}", level="INFO")
         BuiltIn().log(f"UI Password set to: {masked_password_ui}", level="INFO")
 
-        # ✅ Set as environment variables for Python libraries like Playwright
+        # Set as environment variables for Python libraries like Playwright
         os.environ["EMAIL"] = username_email
         os.environ["API_TOKEN"] = password_token
         os.environ["UI_PASSWORD"] = password_ui
 
-        # ✅ Also set for use inside Robot Framework directly
+        # Also set for use inside Robot Framework directly
         BuiltIn().set_global_variable("${EMAIL}", username_email)
         BuiltIn().set_global_variable("${API_TOKEN}", password_token)
         BuiltIn().set_global_variable("${UI_PASSWORD}", password_ui)

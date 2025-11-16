@@ -15,7 +15,7 @@ class JiraTaskUICreation:
             raise FileNotFoundError("jira_cookies.json not found in Library folder")
 
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=100)
+            browser = p.chromium.launch(headless=True, slow_mo=100)
             context = browser.new_context()
 
             with open(cookie_path, "r") as f:
@@ -74,7 +74,7 @@ class JiraTaskUICreation:
             raise FileNotFoundError("jira_cookies.json not found in Library folder")
 
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=100)
+            browser = p.chromium.launch(headless=True, slow_mo=100)
             context = browser.new_context()
 
             with open(cookie_path, "r") as f:

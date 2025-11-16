@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.10.12 on linux)" generated="2025-11-11T08:06:16.144619" rpa="false" schemaversion="5">
+<suite id="s1" name="Test E2Eflow JiraIssue Task" source="/app/Tests/Test_E2Eflow_JiraIssue_Task.robot">
+<kw name="Setup Secrets" owner="JiraAPIKeywords" type="SETUP">
+<kw name="Set Log Level" owner="BuiltIn">
+<arg>WARN</arg>
+<doc>Sets the log threshold to the specified level.</doc>
+<status status="PASS" start="2025-11-11T08:06:16.392708" elapsed="0.000351"/>
+</kw>
+<kw name="INITIALIZE SECRETS" owner="JiraFetchDopplerSecrets">
+<status status="PASS" start="2025-11-11T08:06:16.393191" elapsed="0.869788"/>
+</kw>
+<kw name="Set Log Level" owner="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.263199" elapsed="0.000239"/>
+</kw>
+<status status="PASS" start="2025-11-11T08:06:16.392176" elapsed="0.871446"/>
+</kw>
+<test id="s1-t1" name="Jira Task and Subtask Integration Test via API and UI" line="13">
+<kw name="Create Jira Issue" owner="JiraAPIKeywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.265174" level="INFO">${request_id} = create_issue_Jira Task and Subtask Integration Test via API and UI</msg>
+<var>${request_id}</var>
+<arg>create_issue_${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.264947" elapsed="0.000303"/>
+</kw>
+<kw name="Create Jira Headers" owner="JiraAPIKeywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.266135" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=${content_type}</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.265772" elapsed="0.000396"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-11-11T08:06:17.266229" elapsed="0.000065"/>
+</return>
+<msg time="2025-11-11T08:06:17.266446" level="INFO">${HEADERS} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${HEADERS}</var>
+<status status="PASS" start="2025-11-11T08:06:17.265472" elapsed="0.000998"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.266815" level="INFO">${project} = {'key': 'DEMO'}</msg>
+<var>${project}</var>
+<arg>key=${PROJECT_KEY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.266587" elapsed="0.000253"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.267095" level="INFO">${issuetype} = {'name': 'Task'}</msg>
+<var>${issuetype}</var>
+<arg>name=Task</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.266953" elapsed="0.000166"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.267581" level="INFO">${fields} = {'project': {'key': 'DEMO'}, 'summary': 'Automated Test Issue', 'description': 'Created via Robot Framework', 'issuetype': {'name': 'Task'}}</msg>
+<var>${fields}</var>
+<arg>project=${project}</arg>
+<arg>summary=Automated Test Issue</arg>
+<arg>description=Created via Robot Framework</arg>
+<arg>issuetype=${issuetype}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.267227" elapsed="0.000387"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.267863" level="INFO">${payload} = {'fields': {'project': {'key': 'DEMO'}, 'summary': 'Automated Test Issue', 'description': 'Created via Robot Framework', 'issuetype': {'name': 'Task'}}}</msg>
+<var>${payload}</var>
+<arg>fields=${fields}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.267711" elapsed="0.000176"/>
+</kw>
+<kw name="Make HTTP Request" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:17.269230" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b65022a080&gt;</msg>
+<kw name="Generate HTTP Request" owner="RESTLibrary">
+<kw name="Generate Url" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.270220" level="INFO">https://automationbot999.atlassian.net/rest/api/2/issue</msg>
+<arg>${_requestInfo.url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.269876" elapsed="0.000386"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.269672" elapsed="0.000634"/>
+</kw>
+<kw name="Process Authentication" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:17.270519" level="INFO">Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy</msg>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.270389" elapsed="0.000161"/>
+</kw>
+<kw name="Generate Request Headers" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.271034" level="INFO">{'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy'}</msg>
+<arg>${_requestInfo.requestHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.270755" elapsed="0.000309"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.270621" elapsed="0.000475"/>
+</kw>
+<kw name="Generate Request Body" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:17.271756" level="INFO">{"fields": {"project": {"key": "DEMO"}, "summary": "Automated Test Issue", "description": "Created via Robot Framework", "issuetype": {"name": "Task"}}}</msg>
+<arg>${_requestInfo.requestBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.271333" elapsed="0.000452"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.271162" elapsed="0.000655"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.269404" elapsed="0.002438"/>
+</kw>
+<msg time="2025-11-11T08:06:17.271939" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b65022a080&gt;</msg>
+<kw name="Process Http Request" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.120889" level="INFO">{
+    "id": "11041",
+    "key": "DEMO-398",
+    "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11041"
+}</msg>
+<arg>${_requestInfo.responseBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.120336" elapsed="0.000615"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.121620" level="INFO">{
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Tue, 11 Nov 2025 08:06:18 GMT",
+    "Server": "AtlassianEdge",
+    "Timing-Allow-Origin": "*",
+    "X-Arequestid": "06fa1ed425cd6e2dc8adc63665b73ac9",
+    "Set-Cookie": "atlassian.xsrf.token=b4d8d5dae913a09d711d1be633098e61ee614e1f_lin; Path=/; SameSite=None; Secure",
+    "X-Aaccountid": "712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+    "Cache-Control": "no-cache, no-store, no-transform",
+    "X-Beta-Ratelimit-Limit": "200",
+    "X-Beta-Ratelimit-Remaining": "199",
+    "Vary": "Accept-Encoding",
+    "X-Content-Type-Options": "nosniff",
+    "X-Xss-Protection": "1; mode=block",
+    "Atl-Traceid": "eaebca4e785d48579ef6cc373081a323",
+    "Atl-Request-Id": "eaebca4e-785d-4857-9ef6-cc373081a323",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Report-To": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}",
+    "Nel": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 6ae9c95a0819def152566a00d31a99be.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "BOM54-P2",
+    "X-Amz-Cf-Id": "90pISObz_VoHvMC0Z6Zgul3KBg9tht-ZXPT6eZ7MX3yY5rFT4nWtfw==",
+    "Server-Timing": "cdn-upstream-layer;desc=\"EDGE\",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=1067,atl-edge;dur=1063,atl-edge-internal;dur=140,atl-edge-upstream;dur=873,atl-edge-pop;desc=\"aws-ap-south-1\",cdn-cache-miss,cdn-pop;desc=\"BOM54-P2\",cdn-rid;desc=\"90pISObz_VoHvMC0Z6Zgul3KBg9tht-ZXPT6eZ7MX3yY5rFT4nWtfw==\",cdn-downstream-fbl;dur=1070"
+}</msg>
+<arg>${_requestInfo.responseHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.121241" elapsed="0.001359"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.123859" level="INFO">201</msg>
+<arg>${_requestInfo.responseStatusCode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.122842" elapsed="0.001133"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.272015" elapsed="1.852080"/>
+</kw>
+<msg time="2025-11-11T08:06:19.124377" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b65022a080&gt;</msg>
+<kw name="Verify Response Against Baselines" owner="RESTLibrary">
+<kw name="Verify Status Code" owner="RESTLibrary">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>201</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.125037" elapsed="0.000190"/>
+</kw>
+<arg>&lt;RESTLibrary.request_info.request_info object at 0x78b65022a080&gt;</arg>
+<status status="PASS" start="2025-11-11T08:06:19.124735" elapsed="0.000541"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.124499" elapsed="0.000845"/>
+</kw>
+<arg>${request_id}</arg>
+<arg>${BASE_URL}/rest/api/2/issue</arg>
+<arg>method=POST</arg>
+<arg>requestHeaders=${HEADERS}</arg>
+<arg>requestBody=${payload}</arg>
+<arg>expectedStatusCode=201</arg>
+<arg>authType=Basic</arg>
+<arg>username=${email}</arg>
+<arg>password=${token}</arg>
+<doc> requestid : an alphanumeric value which helps identify an HTTP request uniquely
+ url : entire URI which needs to be invoked, including query parameters.
+ method : HTTP method/verb to be used for the REST call, default is GET, other supported values are HEAD, POST, PUT, PATCH and DELETE
+ requestHeaders : a dictionary of all the headers which need to be passed with HTTP request, default is empty dictionary which means no headers.
+ requestBody : payload/data to be posted along with the request, it can be either a file-path or content itself
+ timeout : request timeout in seconds
+ authType : Type of authentication to be used, default is NoAuth, means no authentication (default can be changed while importing the library with authType=&lt;myDefaultAuthType\&gt; parameter), other supported value is Basic.
+ You can also choose not to use authType variable and provide auth token on your own while making the request in request headers or url based on your API.
+ username : username to be used for authentication while making the request, you can also declare a global/suite/test variable ${username} beforehand rather than passing it with each request. username passed with request will override the global variable.
+ password : password to be used for authentication while making the request, you can also declare a global/suite/test variable ${password} beforehand rather than passing it with each request. password passed with request will override the global variable.
+# Response Channelization
+sponse Channelization (RC) is special and unique feature of RESTLibrary, which lets you extract and channelize the data from response of one API call to next API call with least efforts and in scalable manner.
+ It can channelize data from response body and response headers both.
+ In case of response body channelization you can either channelize selective data or entire body itself based on your need.
+ While channelizing entire body you also have an option to update it if needed.</doc>
+<status status="PASS" start="2025-11-11T08:06:17.267985" elapsed="1.857421"/>
+</kw>
+<kw name="Extract From Response" owner="JiraAPIKeywords">
+<kw name="Execute RC" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.151227" level="INFO">data_manager.RC('''create_issue_Jira Task and Subtask Integration Test via API and UI''','''body''','''$.key''')
+DEMO-398</msg>
+<msg time="2025-11-11T08:06:19.151374" level="INFO">${value} = DEMO-398</msg>
+<var>${value}</var>
+<arg>&lt;&lt;&lt;rc, ${request_id}, body, ${json_path}&gt;&gt;&gt;</arg>
+<doc>input : lets you evaluate all the RC macros, including multiple RCs and NOW immediately and run the response channelization, you can store the value in any variable and use it as required
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;___SomeText__&lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, header, header name&gt;&gt;&gt;
+                          we can also have an Entire Response Channelization where entire response of the src request will be channelized after merging with the patch json, patch can be a file path or json conrent
+                          using this we can add, delete and update the nodes from src json response. (deletion can be achieved using &lt;&lt;&lt;delete&gt;&gt;&gt; value)
+                            &lt;&lt;&lt;RC, src request id, body, patch json&gt;&gt;&gt;
+Returns:
+    returns the value after running the response channelization, it could be a single node value or entire json, depending on whether it is normal RC or entire</doc>
+<status status="PASS" start="2025-11-11T08:06:19.125968" elapsed="0.025426"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-11T08:06:19.151469" elapsed="0.000118"/>
+</return>
+<msg time="2025-11-11T08:06:19.151794" level="INFO">${issue_key} = DEMO-398</msg>
+<var>${issue_key}</var>
+<arg>${request_id}</arg>
+<arg>$.key</arg>
+<status status="PASS" start="2025-11-11T08:06:19.125596" elapsed="0.026220"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.152140" level="INFO">Created Jira issue with key: DEMO-398 and summary: Automated Test Issue</msg>
+<arg>Created Jira issue with key: ${issue_key} and summary: Automated Test Issue</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.151950" elapsed="0.000303"/>
+</kw>
+<return>
+<value>${issue_key}</value>
+<status status="PASS" start="2025-11-11T08:06:19.152299" elapsed="0.000025"/>
+</return>
+<msg time="2025-11-11T08:06:19.152439" level="INFO">${issue_key} = DEMO-398</msg>
+<var>${issue_key}</var>
+<arg>${EMAIL}</arg>
+<arg>${API_TOKEN}</arg>
+<status status="PASS" start="2025-11-11T08:06:17.264553" elapsed="1.888608"/>
+</kw>
+<kw name="Change Issue Status To In Progress" owner="JiraAPIKeywords">
+<kw name="Create Jira Headers" owner="JiraAPIKeywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.154773" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=${content_type}</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.154438" elapsed="0.000376"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-11-11T08:06:19.154913" elapsed="0.000047"/>
+</return>
+<msg time="2025-11-11T08:06:19.155127" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-11-11T08:06:19.153965" elapsed="0.001192"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.155460" level="INFO">${transition_req} = get_transitions_DEMO-398</msg>
+<var>${transition_req}</var>
+<arg>get_transitions_${issue_key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.155305" elapsed="0.000175"/>
+</kw>
+<kw name="Make HTTP Request" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.156062" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500c4460&gt;</msg>
+<kw name="Generate HTTP Request" owner="RESTLibrary">
+<kw name="Generate Url" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.156776" level="INFO">https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/transitions</msg>
+<arg>${_requestInfo.url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.156415" elapsed="0.000412"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.156269" elapsed="0.000624"/>
+</kw>
+<kw name="Process Authentication" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.157088" level="INFO">Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy</msg>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.156978" elapsed="0.000150"/>
+</kw>
+<kw name="Generate Request Headers" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.157711" level="INFO">{'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy'}</msg>
+<arg>${_requestInfo.requestHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.157395" elapsed="0.000372"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.157220" elapsed="0.000585"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.156144" elapsed="0.001690"/>
+</kw>
+<msg time="2025-11-11T08:06:19.157945" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500c4460&gt;</msg>
+<kw name="Process Http Request" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.774097" level="INFO">{
+    "expand": "transitions",
+    "transitions": [
+        {
+            "id": "11",
+            "name": "To Do",
+            "to": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/status/10000",
+                "description": "",
+                "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+                "name": "To Do",
+                "id": "10000",
+                "statusCategory": {
+                    "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/2",
+                    "id": 2,
+                    "key": "new",
+                    "colorName": "blue-gray",
+                    "name": "To Do"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": true,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        },
+        {
+            "id": "21",
+            "name": "In Progress",
+            "to": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/status/10001",
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+                "name": "In Progress",
+                "id": "10001",
+                "statusCategory": {
+                    "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+                    "id": 4,
+                    "key": "indeterminate",
+                    "colorName": "yellow",
+                    "name": "In Progress"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": true,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        },
+        {
+            "id": "31",
+            "name": "In Review",
+            "to": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/status/10002",
+                "description": "",
+                "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+                "name": "In Review",
+                "id": "10002",
+                "statusCategory": {
+                    "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+                    "id": 4,
+                    "key": "indeterminate",
+                    "colorName": "yellow",
+                    "name": "In Progress"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": true,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        },
+        {
+            "id": "41",
+            "name": "Done",
+            "to": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/status/10003",
+                "description": "",
+                "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+                "name": "Done",
+                "id": "10003",
+                "statusCategory": {
+                    "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/3",
+                    "id": 3,
+                    "key": "done",
+                    "colorName": "green",
+                    "name": "Done"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": true,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        }
+    ]
+}</msg>
+<arg>${_requestInfo.responseBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.773450" elapsed="0.000734"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.774750" level="INFO">{
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Tue, 11 Nov 2025 08:06:19 GMT",
+    "Server": "AtlassianEdge",
+    "Timing-Allow-Origin": "*",
+    "X-Arequestid": "505460aaa892199507675d462d0f9112",
+    "Set-Cookie": "atlassian.xsrf.token=97e036b9552876266a912e074213cf456d6c399f_lin; Path=/; SameSite=None; Secure",
+    "X-Aaccountid": "712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+    "Cache-Control": "no-cache, no-store, no-transform",
+    "X-Beta-Ratelimit-Limit": "350",
+    "X-Beta-Ratelimit-Remaining": "349",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "X-Content-Type-Options": "nosniff",
+    "X-Xss-Protection": "1; mode=block",
+    "Atl-Traceid": "14146000d7074d0990193cf6e54f2b53",
+    "Atl-Request-Id": "14146000-d707-4d09-9019-3cf6e54f2b53",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Report-To": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}",
+    "Nel": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 0d849425b42fc562e801b153920bc5f8.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "BOM78-P7",
+    "X-Amz-Cf-Id": "9tF7i_xcJ09zcs1IWL2SR15iVU5PVhxmK2CMP9irVIYz0Xbdeo4iBQ==",
+    "Server-Timing": "cdn-upstream-layer;desc=\"EDGE\",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=1,cdn-upstream-fbl;dur=421,atl-edge;dur=415,atl-edge-internal;dur=136,atl-edge-upstream;dur=228,atl-edge-pop;desc=\"aws-ap-south-1\",cdn-cache-miss,cdn-pop;desc=\"BOM78-P7\",cdn-rid;desc=\"9tF7i_xcJ09zcs1IWL2SR15iVU5PVhxmK2CMP9irVIYz0Xbdeo4iBQ==\",cdn-downstream-fbl;dur=425"
+}</msg>
+<arg>${_requestInfo.responseHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.774418" elapsed="0.001367"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.776205" level="INFO">200</msg>
+<arg>${_requestInfo.responseStatusCode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.775908" elapsed="0.000421"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.158018" elapsed="0.618362"/>
+</kw>
+<msg time="2025-11-11T08:06:19.776517" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500c4460&gt;</msg>
+<kw name="Verify Response Against Baselines" owner="RESTLibrary">
+<kw name="Verify Status Code" owner="RESTLibrary">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>200</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.777261" elapsed="0.000206"/>
+</kw>
+<arg>&lt;RESTLibrary.request_info.request_info object at 0x78b6500c4460&gt;</arg>
+<status status="PASS" start="2025-11-11T08:06:19.776922" elapsed="0.000611"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.776650" elapsed="0.000930"/>
+</kw>
+<arg>${transition_req}</arg>
+<arg>${BASE_URL}/rest/api/2/issue/${issue_key}/transitions</arg>
+<arg>method=GET</arg>
+<arg>requestHeaders=${headers}</arg>
+<arg>expectedStatusCode=200</arg>
+<arg>authType=Basic</arg>
+<arg>username=${email}</arg>
+<arg>password=${token}</arg>
+<doc> requestid : an alphanumeric value which helps identify an HTTP request uniquely
+ url : entire URI which needs to be invoked, including query parameters.
+ method : HTTP method/verb to be used for the REST call, default is GET, other supported values are HEAD, POST, PUT, PATCH and DELETE
+ requestHeaders : a dictionary of all the headers which need to be passed with HTTP request, default is empty dictionary which means no headers.
+ requestBody : payload/data to be posted along with the request, it can be either a file-path or content itself
+ timeout : request timeout in seconds
+ authType : Type of authentication to be used, default is NoAuth, means no authentication (default can be changed while importing the library with authType=&lt;myDefaultAuthType\&gt; parameter), other supported value is Basic.
+ You can also choose not to use authType variable and provide auth token on your own while making the request in request headers or url based on your API.
+ username : username to be used for authentication while making the request, you can also declare a global/suite/test variable ${username} beforehand rather than passing it with each request. username passed with request will override the global variable.
+ password : password to be used for authentication while making the request, you can also declare a global/suite/test variable ${password} beforehand rather than passing it with each request. password passed with request will override the global variable.
+# Response Channelization
+sponse Channelization (RC) is special and unique feature of RESTLibrary, which lets you extract and channelize the data from response of one API call to next API call with least efforts and in scalable manner.
+ It can channelize data from response body and response headers both.
+ In case of response body channelization you can either channelize selective data or entire body itself based on your need.
+ While channelizing entire body you also have an option to update it if needed.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.155611" elapsed="0.622011"/>
+</kw>
+<kw name="Extract From Response" owner="JiraAPIKeywords">
+<kw name="Execute RC" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.796426" level="INFO">data_manager.RC('''get_transitions_DEMO-398''','''body''','''$.transitions[?(@.name=="In Progress")].id''')
+21</msg>
+<msg time="2025-11-11T08:06:19.796579" level="INFO">${value} = 21</msg>
+<var>${value}</var>
+<arg>&lt;&lt;&lt;rc, ${request_id}, body, ${json_path}&gt;&gt;&gt;</arg>
+<doc>input : lets you evaluate all the RC macros, including multiple RCs and NOW immediately and run the response channelization, you can store the value in any variable and use it as required
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;___SomeText__&lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, header, header name&gt;&gt;&gt;
+                          we can also have an Entire Response Channelization where entire response of the src request will be channelized after merging with the patch json, patch can be a file path or json conrent
+                          using this we can add, delete and update the nodes from src json response. (deletion can be achieved using &lt;&lt;&lt;delete&gt;&gt;&gt; value)
+                            &lt;&lt;&lt;RC, src request id, body, patch json&gt;&gt;&gt;
+Returns:
+    returns the value after running the response channelization, it could be a single node value or entire json, depending on whether it is normal RC or entire</doc>
+<status status="PASS" start="2025-11-11T08:06:19.778626" elapsed="0.017985"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-11T08:06:19.796714" elapsed="0.000092"/>
+</return>
+<msg time="2025-11-11T08:06:19.796959" level="INFO">${transition_id} = 21</msg>
+<var>${transition_id}</var>
+<arg>${transition_req}</arg>
+<arg>$.transitions[?(@.name=="In Progress")].id</arg>
+<status status="PASS" start="2025-11-11T08:06:19.777920" elapsed="0.019072"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.797252" level="INFO">${expected_status} = In Progress</msg>
+<var>${expected_status}</var>
+<arg>In Progress</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.797122" elapsed="0.000148"/>
+</kw>
+<kw name="Apply Jira Transition And Verify" owner="JiraAPIKeywords">
+<kw name="Create Jira Headers" owner="JiraAPIKeywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.799307" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=${content_type}</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.797996" elapsed="0.001350"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-11-11T08:06:19.799399" elapsed="0.000035"/>
+</return>
+<msg time="2025-11-11T08:06:19.799651" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-11-11T08:06:19.797796" elapsed="0.001880"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.800030" level="INFO">${payload} = {'transition': {'id': 21}}</msg>
+<var>${payload}</var>
+<arg>{"transition": {"id": ${transition_id}}}</arg>
+<arg>modules=json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.799791" elapsed="0.000260"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.800288" level="INFO">${transition_request} = transition_DEMO-398</msg>
+<var>${transition_request}</var>
+<arg>transition_${issue_key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.800140" elapsed="0.000167"/>
+</kw>
+<kw name="Make HTTP Request" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.800932" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500ca860&gt;</msg>
+<kw name="Generate HTTP Request" owner="RESTLibrary">
+<kw name="Generate Url" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.801598" level="INFO">https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/transitions</msg>
+<arg>${_requestInfo.url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.801251" elapsed="0.000383"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.801134" elapsed="0.000536"/>
+</kw>
+<kw name="Process Authentication" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:19.801870" level="INFO">Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy</msg>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.801747" elapsed="0.000158"/>
+</kw>
+<kw name="Generate Request Headers" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.802388" level="INFO">{'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy'}</msg>
+<arg>${_requestInfo.requestHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.802113" elapsed="0.000309"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.801984" elapsed="0.000478"/>
+</kw>
+<kw name="Generate Request Body" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:19.802977" level="INFO">{"transition": {"id": 21}}</msg>
+<arg>${_requestInfo.requestBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.802700" elapsed="0.000310"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.802534" elapsed="0.000518"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.801012" elapsed="0.002068"/>
+</kw>
+<msg time="2025-11-11T08:06:19.803190" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500ca860&gt;</msg>
+<kw name="Process Http Request" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.678748" level="INFO">{
+    "Content-Type": "text/html;charset=UTF-8",
+    "Connection": "keep-alive",
+    "Date": "Tue, 11 Nov 2025 08:06:20 GMT",
+    "Server": "AtlassianEdge",
+    "Timing-Allow-Origin": "*",
+    "X-Arequestid": "ea75540fb11d0f30e25f43607fac2058",
+    "Set-Cookie": "atlassian.xsrf.token=ef6a3ab2ce6b97ea80e3a7d7d7895bc5c952e9fd_lin; Path=/; SameSite=None; Secure",
+    "X-Aaccountid": "712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+    "Cache-Control": "no-cache, no-store, no-transform",
+    "X-Beta-Ratelimit-Limit": "200",
+    "X-Beta-Ratelimit-Remaining": "199",
+    "Vary": "Accept-Encoding",
+    "X-Content-Type-Options": "nosniff",
+    "X-Xss-Protection": "1; mode=block",
+    "Atl-Traceid": "c4207e861c3e4a1d8ca776e008169f07",
+    "Atl-Request-Id": "c4207e86-1c3e-4a1d-8ca7-76e008169f07",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Report-To": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}",
+    "Nel": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 447e1a5f4e394bd04c9d51c1fd03980e.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "BOM78-P8",
+    "X-Amz-Cf-Id": "VeEMsIdvRSCkMpKvLioe6iJxspbi7eh9iZGRRauZUWeGW1TLkFyXng==",
+    "Server-Timing": "cdn-upstream-layer;desc=\"EDGE\",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=1,cdn-upstream-fbl;dur=665,atl-edge;dur=658,atl-edge-internal;dur=138,atl-edge-upstream;dur=419,atl-edge-pop;desc=\"aws-ap-south-1\",cdn-cache-miss,cdn-pop;desc=\"BOM78-P8\",cdn-rid;desc=\"VeEMsIdvRSCkMpKvLioe6iJxspbi7eh9iZGRRauZUWeGW1TLkFyXng==\",cdn-downstream-fbl;dur=669"
+}</msg>
+<arg>${_requestInfo.responseHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.677791" elapsed="0.001036"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.679499" level="INFO">204</msg>
+<arg>${_requestInfo.responseStatusCode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.679006" elapsed="0.000617"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.803258" elapsed="0.876478"/>
+</kw>
+<msg time="2025-11-11T08:06:20.679889" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500ca860&gt;</msg>
+<kw name="Verify Response Against Baselines" owner="RESTLibrary">
+<kw name="Verify Status Code" owner="RESTLibrary">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>204</arg>
+<arg>204</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.680292" elapsed="0.000099"/>
+</kw>
+<arg>&lt;RESTLibrary.request_info.request_info object at 0x78b6500ca860&gt;</arg>
+<status status="PASS" start="2025-11-11T08:06:20.680178" elapsed="0.000315"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.680000" elapsed="0.000581"/>
+</kw>
+<arg>${transition_request}</arg>
+<arg>${BASE_URL}/rest/api/2/issue/${issue_key}/transitions</arg>
+<arg>method=POST</arg>
+<arg>requestHeaders=${headers}</arg>
+<arg>requestBody=${payload}</arg>
+<arg>expectedStatusCode=204</arg>
+<arg>authType=Basic</arg>
+<arg>username=${email}</arg>
+<arg>password=${token}</arg>
+<doc> requestid : an alphanumeric value which helps identify an HTTP request uniquely
+ url : entire URI which needs to be invoked, including query parameters.
+ method : HTTP method/verb to be used for the REST call, default is GET, other supported values are HEAD, POST, PUT, PATCH and DELETE
+ requestHeaders : a dictionary of all the headers which need to be passed with HTTP request, default is empty dictionary which means no headers.
+ requestBody : payload/data to be posted along with the request, it can be either a file-path or content itself
+ timeout : request timeout in seconds
+ authType : Type of authentication to be used, default is NoAuth, means no authentication (default can be changed while importing the library with authType=&lt;myDefaultAuthType\&gt; parameter), other supported value is Basic.
+ You can also choose not to use authType variable and provide auth token on your own while making the request in request headers or url based on your API.
+ username : username to be used for authentication while making the request, you can also declare a global/suite/test variable ${username} beforehand rather than passing it with each request. username passed with request will override the global variable.
+ password : password to be used for authentication while making the request, you can also declare a global/suite/test variable ${password} beforehand rather than passing it with each request. password passed with request will override the global variable.
+# Response Channelization
+sponse Channelization (RC) is special and unique feature of RESTLibrary, which lets you extract and channelize the data from response of one API call to next API call with least efforts and in scalable manner.
+ It can channelize data from response body and response headers both.
+ In case of response body channelization you can either channelize selective data or entire body itself based on your need.
+ While channelizing entire body you also have an option to update it if needed.</doc>
+<status status="PASS" start="2025-11-11T08:06:19.800427" elapsed="0.880202"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.681727" level="INFO">Applied transition 'In Progress using API' to issue DEMO-398</msg>
+<arg>Applied transition '${transition_name} using API' to issue ${issue_key}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.681378" elapsed="0.000526"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.682302" level="INFO">${verify_request} = status_after_DEMO-398</msg>
+<var>${verify_request}</var>
+<arg>status_after_${issue_key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.682066" elapsed="0.000264"/>
+</kw>
+<kw name="Make HTTP Request" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:20.683345" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500cb880&gt;</msg>
+<kw name="Generate HTTP Request" owner="RESTLibrary">
+<kw name="Generate Url" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.684620" level="INFO">https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398</msg>
+<arg>${_requestInfo.url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.684070" elapsed="0.000641"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.683852" elapsed="0.000942"/>
+</kw>
+<kw name="Process Authentication" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:20.685070" level="INFO">Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy</msg>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.684913" elapsed="0.000204"/>
+</kw>
+<kw name="Generate Request Headers" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:20.685975" level="INFO">{'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy'}</msg>
+<arg>${_requestInfo.requestHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.685481" elapsed="0.000536"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.685233" elapsed="0.000826"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.683544" elapsed="0.002547"/>
+</kw>
+<msg time="2025-11-11T08:06:20.686214" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500cb880&gt;</msg>
+<kw name="Process Http Request" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:21.227902" level="INFO">{
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "11041",
+    "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11041",
+    "key": "DEMO-398",
+    "fields": {
+        "statuscategorychangedate": "2025-11-11T13:36:19.956+0530",
+        "issuetype": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issuetype/10003",
+            "id": "10003",
+            "description": "Tasks track small, distinct pieces of work.",
+            "iconUrl": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+            "name": "Task",
+            "subtask": false,
+            "avatarId": 10318,
+            "entityId": "0d501f4f-d0ef-44c7-b1f3-0fe304b60f7d",
+            "hierarchyLevel": 0
+        },
+        "components": [],
+        "timespent": null,
+        "timeoriginalestimate": null,
+        "project": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/project/10000",
+            "id": "10000",
+            "key": "DEMO",
+            "name": "JiraAutomationDemo",
+            "projectTypeKey": "software",
+            "simplified": true,
+            "avatarUrls": {
+                "48x48": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414",
+                "24x24": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=small",
+                "16x16": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+                "32x32": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=medium"
+            }
+        },
+        "description": "Created via Robot Framework",
+        "fixVersions": [],
+        "aggregatetimespent": null,
+        "statusCategory": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+        },
+        "resolution": null,
+        "customfield_10036": null,
+        "timetracking": {},
+        "customfield_10015": null,
+        "security": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "summary": "Automated Test Issue",
+        "issuerestriction": {
+            "issuerestrictions": {},
+            "shouldDisplay": true
+        },
+        "watches": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/watchers",
+            "watchCount": 1,
+            "isWatching": true
+        },
+        "lastViewed": null,
+        "creator": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/user?accountId=712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+            "accountId": "712020:ff5b844e-f255-4bab-964d-19098454b36c",
+            "emailAddress": "automationbot999@gmail.com",
+            "avatarUrls": {
+                "48x48": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "24x24": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "16x16": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "32x32": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png"
+            },
+            "displayName": "JiraDemoUser",
+            "active": true,
+            "timeZone": "Asia/Calcutta",
+            "accountType": "atlassian"
+        },
+        "subtasks": [],
+        "created": "2025-11-11T13:36:18.166+0530",
+        "customfield_10021": null,
+        "reporter": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/user?accountId=712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+            "accountId": "712020:ff5b844e-f255-4bab-964d-19098454b36c",
+            "emailAddress": "automationbot999@gmail.com",
+            "avatarUrls": {
+                "48x48": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "24x24": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "16x16": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "32x32": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png"
+            },
+            "displayName": "JiraDemoUser",
+            "active": true,
+            "timeZone": "Asia/Calcutta",
+            "accountType": "atlassian"
+        },
+        "aggregateprogress": {
+            "progress": 0,
+            "total": 0
+        },
+        "priority": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/priority/3",
+            "iconUrl": "https://automationbot999.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+        },
+        "customfield_10001": null,
+        "labels": [],
+        "environment": null,
+        "customfield_10019": "0|i00007:",
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "duedate": null,
+        "progress": {
+            "progress": 0,
+            "total": 0
+        },
+        "issuelinks": [],
+        "votes": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/votes",
+            "votes": 0,
+            "hasVoted": false
+        },
+        "comment": {
+            "comments": [],
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11041/comment",
+            "maxResults": 0,
+            "total": 0,
+            "startAt": 0
+        },
+        "assignee": null,
+        "worklog": {
+            "startAt": 0,
+            "maxResults": 20,
+            "total": 0,
+            "worklogs": []
+        },
+        "updated": "2025-11-11T13:36:19.956+0530",
+        "status": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/status/10001",
+            "description": "This work item is being actively worked on at the moment by the assignee.",
+            "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Progress",
+            "id": "10001",
+            "statusCategory": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+                "id": 4,
+                "key": "indeterminate",
+                "colorName": "yellow",
+                "name": "In Progress"
+            }
+        }
+    }
+}</msg>
+<arg>${_requestInfo.responseBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.227085" elapsed="0.001428"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:21.229194" level="INFO">{
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Tue, 11 Nov 2025 08:06:20 GMT",
+    "Server": "AtlassianEdge",
+    "Timing-Allow-Origin": "*",
+    "X-Arequestid": "39b273986c1852f299e449770773c8af",
+    "Set-Cookie": "atlassian.xsrf.token=041dc67803b9eb3c20f3979160dd847c4b8a950d_lin; Path=/; SameSite=None; Secure",
+    "X-Aaccountid": "712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+    "Cache-Control": "no-cache, no-store, no-transform",
+    "X-Beta-Ratelimit-Limit": "400",
+    "X-Beta-Ratelimit-Remaining": "399",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "X-Content-Type-Options": "nosniff",
+    "X-Xss-Protection": "1; mode=block",
+    "Atl-Traceid": "ef3154bdf6b5426a977d334a5d5b6b5a",
+    "Atl-Request-Id": "ef3154bd-f6b5-426a-977d-334a5d5b6b5a",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Report-To": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}",
+    "Nel": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 9ef4ea79411a6ec653bbc06a680774b2.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "BOM54-P2",
+    "X-Amz-Cf-Id": "UNL9Ud-S-t-KaCNZsqy7ppFedXl6jtYkUUKdANisWQK545Myq_kj_w==",
+    "Server-Timing": "cdn-upstream-layer;desc=\"EDGE\",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=1,cdn-upstream-fbl;dur=319,atl-edge;dur=312,atl-edge-internal;dur=78,atl-edge-upstream;dur=234,atl-edge-pop;desc=\"aws-ap-south-1\",cdn-cache-miss,cdn-pop;desc=\"BOM54-P2\",cdn-rid;desc=\"UNL9Ud-S-t-KaCNZsqy7ppFedXl6jtYkUUKdANisWQK545Myq_kj_w==\",cdn-downstream-fbl;dur=324"
+}</msg>
+<arg>${_requestInfo.responseHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.228755" elapsed="0.000880"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:21.230179" level="INFO">200</msg>
+<arg>${_requestInfo.responseStatusCode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.229790" elapsed="0.000425"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:20.686307" elapsed="0.543949"/>
+</kw>
+<msg time="2025-11-11T08:06:21.230382" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b6500cb880&gt;</msg>
+<kw name="Verify Response Against Baselines" owner="RESTLibrary">
+<kw name="Verify Status Code" owner="RESTLibrary">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>200</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.230785" elapsed="0.000266"/>
+</kw>
+<arg>&lt;RESTLibrary.request_info.request_info object at 0x78b6500cb880&gt;</arg>
+<status status="PASS" start="2025-11-11T08:06:21.230675" elapsed="0.000458"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:21.230468" elapsed="0.000703"/>
+</kw>
+<arg>${verify_request}</arg>
+<arg>${BASE_URL}/rest/api/2/issue/${issue_key}</arg>
+<arg>method=GET</arg>
+<arg>requestHeaders=${headers}</arg>
+<arg>expectedStatusCode=200</arg>
+<arg>authType=Basic</arg>
+<arg>username=${email}</arg>
+<arg>password=${token}</arg>
+<doc> requestid : an alphanumeric value which helps identify an HTTP request uniquely
+ url : entire URI which needs to be invoked, including query parameters.
+ method : HTTP method/verb to be used for the REST call, default is GET, other supported values are HEAD, POST, PUT, PATCH and DELETE
+ requestHeaders : a dictionary of all the headers which need to be passed with HTTP request, default is empty dictionary which means no headers.
+ requestBody : payload/data to be posted along with the request, it can be either a file-path or content itself
+ timeout : request timeout in seconds
+ authType : Type of authentication to be used, default is NoAuth, means no authentication (default can be changed while importing the library with authType=&lt;myDefaultAuthType\&gt; parameter), other supported value is Basic.
+ You can also choose not to use authType variable and provide auth token on your own while making the request in request headers or url based on your API.
+ username : username to be used for authentication while making the request, you can also declare a global/suite/test variable ${username} beforehand rather than passing it with each request. username passed with request will override the global variable.
+ password : password to be used for authentication while making the request, you can also declare a global/suite/test variable ${password} beforehand rather than passing it with each request. password passed with request will override the global variable.
+# Response Channelization
+sponse Channelization (RC) is special and unique feature of RESTLibrary, which lets you extract and channelize the data from response of one API call to next API call with least efforts and in scalable manner.
+ It can channelize data from response body and response headers both.
+ In case of response body channelization you can either channelize selective data or entire body itself based on your need.
+ While channelizing entire body you also have an option to update it if needed.</doc>
+<status status="PASS" start="2025-11-11T08:06:20.682483" elapsed="0.548722"/>
+</kw>
+<kw name="Extract From Response" owner="JiraAPIKeywords">
+<kw name="Execute RC" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:21.248974" level="INFO">data_manager.RC('''status_after_DEMO-398''','''body''','''$.fields.status.name''')
+In Progress</msg>
+<msg time="2025-11-11T08:06:21.249126" level="INFO">${value} = In Progress</msg>
+<var>${value}</var>
+<arg>&lt;&lt;&lt;rc, ${request_id}, body, ${json_path}&gt;&gt;&gt;</arg>
+<doc>input : lets you evaluate all the RC macros, including multiple RCs and NOW immediately and run the response channelization, you can store the value in any variable and use it as required
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;___SomeText__&lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, header, header name&gt;&gt;&gt;
+                          we can also have an Entire Response Channelization where entire response of the src request will be channelized after merging with the patch json, patch can be a file path or json conrent
+                          using this we can add, delete and update the nodes from src json response. (deletion can be achieved using &lt;&lt;&lt;delete&gt;&gt;&gt; value)
+                            &lt;&lt;&lt;RC, src request id, body, patch json&gt;&gt;&gt;
+Returns:
+    returns the value after running the response channelization, it could be a single node value or entire json, depending on whether it is normal RC or entire</doc>
+<status status="PASS" start="2025-11-11T08:06:21.231612" elapsed="0.017534"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-11T08:06:21.249221" elapsed="0.000044"/>
+</return>
+<msg time="2025-11-11T08:06:21.249389" level="INFO">${actual_status} = In Progress</msg>
+<var>${actual_status}</var>
+<arg>${verify_request}</arg>
+<arg>$.fields.status.name</arg>
+<status status="PASS" start="2025-11-11T08:06:21.231368" elapsed="0.018039"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:21.249747" level="INFO">Verified issue DEMO-398 is in status: In Progress using API</msg>
+<arg>Verified issue ${issue_key} is in status: ${actual_status} using API</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.249537" elapsed="0.000329"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_status}</arg>
+<arg>${expected_status}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-11T08:06:21.250001" elapsed="0.000262"/>
+</kw>
+<arg>${issue_key}</arg>
+<arg>${email}</arg>
+<arg>${token}</arg>
+<arg>${transition_id}</arg>
+<arg>In Progress</arg>
+<arg>${expected_status}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.797435" elapsed="1.453656"/>
+</kw>
+<msg time="2025-11-11T08:06:21.251285" level="INFO">${issue_status} = None</msg>
+<var>${issue_status}</var>
+<arg>${issue_key}</arg>
+<arg>${EMAIL}</arg>
+<arg>${API_TOKEN}</arg>
+<status status="PASS" start="2025-11-11T08:06:19.153444" elapsed="2.097878"/>
+</kw>
+<kw name="Run Jira UI Flow" owner="JiraTaskandSubtaskIntegration">
+<msg time="2025-11-11T08:06:33.557211" level="INFO">Navigating to Jira instance...
+ Waiting for project link...
+ Project opened.
+ Validating issue panel for: DEMO-398
+Issue DEMO-398 is visible with summary 'Automated Test Issue'
+ Status on UI: In Progress
+Creating subtask inline...
+ Subtask with name :'Subtask for DEMO-398' created successfully.
+Subtask created with ID: DEMO-399
+ Jira UI flow completed successfully.</msg>
+<arg>${ISSUE_KEY}</arg>
+<doc>Runs an end-to-end Jira UI validation and update flow:</doc>
+<status status="PASS" start="2025-11-11T08:06:21.251555" elapsed="12.305785"/>
+</kw>
+<kw name="Get Subtask Details" owner="JiraAPIKeywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:33.558405" level="INFO">${request_id} = get_subtasks_DEMO-398</msg>
+<var>${request_id}</var>
+<arg>get_subtasks_${issue_key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:33.558170" elapsed="0.000259"/>
+</kw>
+<kw name="Create Jira Headers" owner="JiraAPIKeywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-11T08:06:33.559042" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=${content_type}</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-11T08:06:33.558799" elapsed="0.000264"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-11-11T08:06:33.559100" elapsed="0.000032"/>
+</return>
+<msg time="2025-11-11T08:06:33.559219" level="INFO">${headers} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-11-11T08:06:33.558578" elapsed="0.000657"/>
+</kw>
+<kw name="Make HTTP Request" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:33.559947" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b64f508dc0&gt;</msg>
+<kw name="Generate HTTP Request" owner="RESTLibrary">
+<kw name="Generate Url" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:33.560773" level="INFO">https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398</msg>
+<arg>${_requestInfo.url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:33.560343" elapsed="0.000466"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.560196" elapsed="0.000650"/>
+</kw>
+<kw name="Process Authentication" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:33.561179" level="INFO">Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy</msg>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.560948" elapsed="0.000272"/>
+</kw>
+<kw name="Generate Request Headers" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:33.562276" level="INFO">{'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Basic YXV0b21hdGlvbmJvdDk5OUBnbWFpbC5jb206QVRBVFQzeEZmR0YwcWl5MU9HZzN5N2tya19fY3piaHhDTE9ISjZoVXpLbnRUeEE3aEQtVmY4bGVKLURIUmE5bnIxcEctOTVodVlwQ25SNllDMFRQU0pLaUFvc0l4RmJpUUxNWDd2N2VoQzJqQ0dMUWZSZXJvdGJPYkJLbFRsN0tZa0pvZHU0U0tnSlhuNzNtRnVueUlTWm5yMXpYOHVjMjZnX2I3dmpYMEdhWkxCNmUzcGVPZE1RPTI4RTkxOUUy'}</msg>
+<arg>${_requestInfo.requestHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:33.561508" elapsed="0.000812"/>
+</kw>
+<arg>${_requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.561335" elapsed="0.001027"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.560057" elapsed="0.002335"/>
+</kw>
+<msg time="2025-11-11T08:06:33.562574" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b64f508dc0&gt;</msg>
+<kw name="Process Http Request" owner="RESTLibrary">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.592106" level="INFO">{
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "11041",
+    "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11041",
+    "key": "DEMO-398",
+    "fields": {
+        "statuscategorychangedate": "2025-11-11T13:36:19.956+0530",
+        "issuetype": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issuetype/10003",
+            "id": "10003",
+            "description": "Tasks track small, distinct pieces of work.",
+            "iconUrl": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+            "name": "Task",
+            "subtask": false,
+            "avatarId": 10318,
+            "entityId": "0d501f4f-d0ef-44c7-b1f3-0fe304b60f7d",
+            "hierarchyLevel": 0
+        },
+        "components": [],
+        "timespent": null,
+        "timeoriginalestimate": null,
+        "project": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/project/10000",
+            "id": "10000",
+            "key": "DEMO",
+            "name": "JiraAutomationDemo",
+            "projectTypeKey": "software",
+            "simplified": true,
+            "avatarUrls": {
+                "48x48": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414",
+                "24x24": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=small",
+                "16x16": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+                "32x32": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=medium"
+            }
+        },
+        "description": "Created via Robot Framework",
+        "fixVersions": [],
+        "aggregatetimespent": null,
+        "statusCategory": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+        },
+        "resolution": null,
+        "customfield_10036": null,
+        "timetracking": {},
+        "customfield_10015": null,
+        "security": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "summary": "Automated Test Issue",
+        "issuerestriction": {
+            "issuerestrictions": {},
+            "shouldDisplay": true
+        },
+        "watches": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/watchers",
+            "watchCount": 1,
+            "isWatching": true
+        },
+        "lastViewed": "2025-11-11T13:36:31.563+0530",
+        "creator": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/user?accountId=712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+            "accountId": "712020:ff5b844e-f255-4bab-964d-19098454b36c",
+            "emailAddress": "automationbot999@gmail.com",
+            "avatarUrls": {
+                "48x48": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "24x24": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "16x16": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "32x32": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png"
+            },
+            "displayName": "JiraDemoUser",
+            "active": true,
+            "timeZone": "Asia/Calcutta",
+            "accountType": "atlassian"
+        },
+        "subtasks": [
+            {
+                "id": "11043",
+                "key": "DEMO-399",
+                "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11043",
+                "fields": {
+                    "summary": "Subtask for DEMO-398",
+                    "status": {
+                        "self": "https://automationbot999.atlassian.net/rest/api/2/status/10000",
+                        "description": "",
+                        "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+                        "name": "To Do",
+                        "id": "10000",
+                        "statusCategory": {
+                            "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/2",
+                            "id": 2,
+                            "key": "new",
+                            "colorName": "blue-gray",
+                            "name": "To Do"
+                        }
+                    },
+                    "priority": {
+                        "self": "https://automationbot999.atlassian.net/rest/api/2/priority/3",
+                        "iconUrl": "https://automationbot999.atlassian.net/images/icons/priorities/medium_new.svg",
+                        "name": "Medium",
+                        "id": "3"
+                    },
+                    "issuetype": {
+                        "self": "https://automationbot999.atlassian.net/rest/api/2/issuetype/10002",
+                        "id": "10002",
+                        "description": "Subtasks track small pieces of work that are part of a larger task.",
+                        "iconUrl": "https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                        "name": "Subtask",
+                        "subtask": true,
+                        "avatarId": 10316,
+                        "entityId": "b9f890ba-fc3b-425c-9d66-6d6565af4531",
+                        "hierarchyLevel": -1
+                    }
+                }
+            }
+        ],
+        "created": "2025-11-11T13:36:18.166+0530",
+        "customfield_10021": null,
+        "reporter": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/user?accountId=712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+            "accountId": "712020:ff5b844e-f255-4bab-964d-19098454b36c",
+            "emailAddress": "automationbot999@gmail.com",
+            "avatarUrls": {
+                "48x48": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "24x24": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "16x16": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png",
+                "32x32": "https://secure.gravatar.com/avatar/6eadab7554bbc434a2fbf4a4d1a3e344?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJ-4.png"
+            },
+            "displayName": "JiraDemoUser",
+            "active": true,
+            "timeZone": "Asia/Calcutta",
+            "accountType": "atlassian"
+        },
+        "aggregateprogress": {
+            "progress": 0,
+            "total": 0
+        },
+        "priority": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/priority/3",
+            "iconUrl": "https://automationbot999.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+        },
+        "customfield_10001": null,
+        "labels": [],
+        "environment": null,
+        "customfield_10019": "0|i00007:",
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "duedate": null,
+        "progress": {
+            "progress": 0,
+            "total": 0
+        },
+        "issuelinks": [],
+        "votes": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/DEMO-398/votes",
+            "votes": 0,
+            "hasVoted": false
+        },
+        "comment": {
+            "comments": [],
+            "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11041/comment",
+            "maxResults": 0,
+            "total": 0,
+            "startAt": 0
+        },
+        "assignee": null,
+        "worklog": {
+            "startAt": 0,
+            "maxResults": 20,
+            "total": 0,
+            "worklogs": []
+        },
+        "updated": "2025-11-11T13:36:19.956+0530",
+        "status": {
+            "self": "https://automationbot999.atlassian.net/rest/api/2/status/10001",
+            "description": "This work item is being actively worked on at the moment by the assignee.",
+            "iconUrl": "https://automationbot999.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Progress",
+            "id": "10001",
+            "statusCategory": {
+                "self": "https://automationbot999.atlassian.net/rest/api/2/statuscategory/4",
+                "id": 4,
+                "key": "indeterminate",
+                "colorName": "yellow",
+                "name": "In Progress"
+            }
+        }
+    }
+}</msg>
+<arg>${_requestInfo.responseBody}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.591372" elapsed="0.002124"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.594212" level="INFO">{
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Tue, 11 Nov 2025 08:06:34 GMT",
+    "Server": "AtlassianEdge",
+    "Timing-Allow-Origin": "*",
+    "X-Arequestid": "f69f93f60c47a279adae16efbf08ea43",
+    "Set-Cookie": "atlassian.xsrf.token=6e861a9c0e7f997e080eef40d76ab65aab3d302b_lin; Path=/; SameSite=None; Secure",
+    "X-Aaccountid": "712020%3Aff5b844e-f255-4bab-964d-19098454b36c",
+    "Cache-Control": "no-cache, no-store, no-transform",
+    "X-Beta-Ratelimit-Limit": "400",
+    "X-Beta-Ratelimit-Remaining": "399",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "X-Content-Type-Options": "nosniff",
+    "X-Xss-Protection": "1; mode=block",
+    "Atl-Traceid": "bf9d99f383ed4fd6803cf53b8809326a",
+    "Atl-Request-Id": "bf9d99f3-83ed-4fd6-803c-f53b8809326a",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Report-To": "{\"endpoints\": [{\"url\": \"https://dz8aopenkvv6s.cloudfront.net\"}], \"group\": \"endpoint-1\", \"include_subdomains\": true, \"max_age\": 600}",
+    "Nel": "{\"failure_fraction\": 0.001, \"include_subdomains\": true, \"max_age\": 600, \"report_to\": \"endpoint-1\"}",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 616a9b844d2875ba151f8c0a1e0fb344.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "BOM78-P7",
+    "X-Amz-Cf-Id": "jOv-xEU1EdZFoCCs_wVAKw3n_tANvzdrRi8pJ-q-YlgU5Fsu__Gsfg==",
+    "Server-Timing": "cdn-upstream-layer;desc=\"EDGE\",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=1,cdn-upstream-fbl;dur=266,atl-edge;dur=258,atl-edge-internal;dur=16,atl-edge-upstream;dur=241,atl-edge-pop;desc=\"aws-ap-south-1\",cdn-cache-miss,cdn-pop;desc=\"BOM78-P7\",cdn-rid;desc=\"jOv-xEU1EdZFoCCs_wVAKw3n_tANvzdrRi8pJ-q-YlgU5Fsu__Gsfg==\",cdn-downstream-fbl;dur=270"
+}</msg>
+<arg>${_requestInfo.responseHeaders}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.593808" elapsed="0.000453"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.594689" level="INFO">200</msg>
+<arg>${_requestInfo.responseStatusCode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.594374" elapsed="0.000352"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.562707" elapsed="1.032063"/>
+</kw>
+<msg time="2025-11-11T08:06:34.594916" level="INFO">${requestInfo} = &lt;RESTLibrary.request_info.request_info object at 0x78b64f508dc0&gt;</msg>
+<kw name="Verify Response Against Baselines" owner="RESTLibrary">
+<kw name="Verify Status Code" owner="RESTLibrary">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>200</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.595330" elapsed="0.000114"/>
+</kw>
+<arg>&lt;RESTLibrary.request_info.request_info object at 0x78b64f508dc0&gt;</arg>
+<status status="PASS" start="2025-11-11T08:06:34.595190" elapsed="0.000300"/>
+</kw>
+<arg>${requestInfo}</arg>
+<status status="PASS" start="2025-11-11T08:06:34.595008" elapsed="0.000522"/>
+</kw>
+<arg>${request_id}</arg>
+<arg>${BASE_URL}/rest/api/2/issue/${issue_key}</arg>
+<arg>method=GET</arg>
+<arg>requestHeaders=${headers}</arg>
+<arg>expectedStatusCode=200</arg>
+<arg>authType=Basic</arg>
+<arg>username=${email}</arg>
+<arg>password=${token}</arg>
+<doc> requestid : an alphanumeric value which helps identify an HTTP request uniquely
+ url : entire URI which needs to be invoked, including query parameters.
+ method : HTTP method/verb to be used for the REST call, default is GET, other supported values are HEAD, POST, PUT, PATCH and DELETE
+ requestHeaders : a dictionary of all the headers which need to be passed with HTTP request, default is empty dictionary which means no headers.
+ requestBody : payload/data to be posted along with the request, it can be either a file-path or content itself
+ timeout : request timeout in seconds
+ authType : Type of authentication to be used, default is NoAuth, means no authentication (default can be changed while importing the library with authType=&lt;myDefaultAuthType\&gt; parameter), other supported value is Basic.
+ You can also choose not to use authType variable and provide auth token on your own while making the request in request headers or url based on your API.
+ username : username to be used for authentication while making the request, you can also declare a global/suite/test variable ${username} beforehand rather than passing it with each request. username passed with request will override the global variable.
+ password : password to be used for authentication while making the request, you can also declare a global/suite/test variable ${password} beforehand rather than passing it with each request. password passed with request will override the global variable.
+# Response Channelization
+sponse Channelization (RC) is special and unique feature of RESTLibrary, which lets you extract and channelize the data from response of one API call to next API call with least efforts and in scalable manner.
+ It can channelize data from response body and response headers both.
+ In case of response body channelization you can either channelize selective data or entire body itself based on your need.
+ While channelizing entire body you also have an option to update it if needed.</doc>
+<status status="PASS" start="2025-11-11T08:06:33.559329" elapsed="1.036239"/>
+</kw>
+<kw name="Extract From Response" owner="JiraAPIKeywords">
+<kw name="Execute RC" owner="RESTLibrary">
+<msg time="2025-11-11T08:06:34.611964" level="INFO">data_manager.RC('''get_subtasks_DEMO-398''','''body''','''$.fields.subtasks''')
+[{'id': '11043', 'key': 'DEMO-399', 'self': 'https://automationbot999.atlassian.net/rest/api/2/issue/11043', 'fields': {'summary': 'Subtask for DEMO-398', 'status': {'self': 'https://automationbot999.atlassian.net/rest/api/2/status/10000', 'description': '', 'iconUrl': 'https://automationbot999.atlassian.net/images/icons/statuses/generic.png', 'name': 'To Do', 'id': '10000', 'statusCategory': {'self': 'https://automationbot999.atlassian.net/rest/api/2/statuscategory/2', 'id': 2, 'key': 'new', 'colorName': 'blue-gray', 'name': 'To Do'}}, 'priority': {'self': 'https://automationbot999.atlassian.net/rest/api/2/priority/3', 'iconUrl': 'https://automationbot999.atlassian.net/images/icons/priorities/medium_new.svg', 'name': 'Medium', 'id': '3'}, 'issuetype': {'self': 'https://automationbot999.atlassian.net/rest/api/2/issuetype/10002', 'id': '10002', 'description': 'Subtasks track small pieces of work that are part of a larger task.', 'iconUrl': 'https://automationbot999.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium', 'name': 'Subtask', 'subtask': True, 'avatarId': 10316, 'entityId': 'b9f890ba-fc3b-425c-9d66-6d6565af4531', 'hierarchyLevel': -1}}}]</msg>
+<msg time="2025-11-11T08:06:34.612115" level="INFO">${value} = [
+    {
+        "id": "11043",
+        "key": "DEMO-399",
+        "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11043",
+        "fields": {
+            "summary": "Subtask for DEMO-...</msg>
+<var>${value}</var>
+<arg>&lt;&lt;&lt;rc, ${request_id}, body, ${json_path}&gt;&gt;&gt;</arg>
+<doc>input : lets you evaluate all the RC macros, including multiple RCs and NOW immediately and run the response channelization, you can store the value in any variable and use it as required
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;___SomeText__&lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;NOW&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, body, json path&gt;&gt;&gt;
+                            &lt;&lt;&lt;RC, src request id, header, header name&gt;&gt;&gt;
+                          we can also have an Entire Response Channelization where entire response of the src request will be channelized after merging with the patch json, patch can be a file path or json conrent
+                          using this we can add, delete and update the nodes from src json response. (deletion can be achieved using &lt;&lt;&lt;delete&gt;&gt;&gt; value)
+                            &lt;&lt;&lt;RC, src request id, body, patch json&gt;&gt;&gt;
+Returns:
+    returns the value after running the response channelization, it could be a single node value or entire json, depending on whether it is normal RC or entire</doc>
+<status status="PASS" start="2025-11-11T08:06:34.596021" elapsed="0.016114"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-11T08:06:34.613152" elapsed="0.000056"/>
+</return>
+<msg time="2025-11-11T08:06:34.613373" level="INFO">${subtasks} = [
+    {
+        "id": "11043",
+        "key": "DEMO-399",
+        "self": "https://automationbot999.atlassian.net/rest/api/2/issue/11043",
+        "fields": {
+            "summary": "Subtask for DEMO-...</msg>
+<var>${subtasks}</var>
+<arg>${request_id}</arg>
+<arg>$.fields.subtasks</arg>
+<status status="PASS" start="2025-11-11T08:06:34.595740" elapsed="0.017654"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.613880" level="INFO">${subtasks} = [{'id': '11043', 'key': 'DEMO-399', 'self': 'https://automationbot999.atlassian.net/rest/api/2/issue/11043', 'fields': {'summary': 'Subtask for DEMO-398', 'status': {'self': 'https://automationbot999....</msg>
+<var>${subtasks}</var>
+<arg>json.loads('''${subtasks}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.613529" elapsed="0.000377"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.614567" level="INFO">${subtask_id} = DEMO-399</msg>
+<var>${subtask_id}</var>
+<arg>${subtask["key"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.614205" elapsed="0.000382"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.615114" level="INFO">${subtask_summary} = Subtask for DEMO-398</msg>
+<var>${subtask_summary}</var>
+<arg>${subtask["fields"]["summary"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.614677" elapsed="0.000481"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-11T08:06:34.615482" level="INFO">Subtask verified via API: DEMO-399 | Summary: Subtask for DEMO-398</msg>
+<arg>Subtask verified via API: ${subtask_id} | Summary: ${subtask_summary}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-11T08:06:34.615247" elapsed="0.000334"/>
+</kw>
+<var name="${subtask}">{'id': '11043', 'key': 'DEMO-399', 'self': 'https://automationbot999.atlassian.net/rest/api/2/issue/11043', 'fields': {'summary': 'Subtask for DEMO-398', 'status': {'self': 'https://automationbot999.a...</var>
+<status status="PASS" start="2025-11-11T08:06:34.614114" elapsed="0.001498"/>
+</iter>
+<var>${subtask}</var>
+<value>@{subtasks}</value>
+<status status="PASS" start="2025-11-11T08:06:34.613968" elapsed="0.001686"/>
+</for>
+<arg>${ISSUE_KEY}</arg>
+<arg>${EMAIL}</arg>
+<arg>${API_TOKEN}</arg>
+<status status="PASS" start="2025-11-11T08:06:33.557744" elapsed="1.057969"/>
+</kw>
+<doc>Task creation and status transition via API
+UI validation and summary update
+Subtask creation via UI
+Subtask verification via API</doc>
+<tag>API_UI_API</tag>
+<status status="PASS" start="2025-11-11T08:06:17.263734" elapsed="17.352106"/>
+</test>
+<doc>E2E flow for create, update, status transition, and delete Task in JIRA</doc>
+<status status="PASS" start="2025-11-11T08:06:16.149092" elapsed="18.468012"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">API_UI_API</stat>
+</tag>
+<suite>
+<stat name="Test E2Eflow JiraIssue Task" id="s1" pass="1" fail="0" skip="0">Test E2Eflow JiraIssue Task</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
