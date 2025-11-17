@@ -18,7 +18,7 @@ Jira Epic > User Story > Subtask Integration Test via API and UI
     [Documentation]    Create Epic via API
     ...                Validate Epic on UI
     ...                Create Story under Epic via UI
-    ...                Create Sub-Task under Epic via API
+    ...                Create Sub-Task under Story via API
 
     [Tags]    Epic_Story_Subtask_flow
 
